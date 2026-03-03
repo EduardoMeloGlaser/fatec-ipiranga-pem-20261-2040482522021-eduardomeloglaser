@@ -1,0 +1,5 @@
+git status
+git add .
+git log
+git remote add origin https://github.com/EduardoMeloGlaser/fatec-ipiranga-pem-20261-2040482522021-eduardomeloglaser.git
+git push -u origin main
