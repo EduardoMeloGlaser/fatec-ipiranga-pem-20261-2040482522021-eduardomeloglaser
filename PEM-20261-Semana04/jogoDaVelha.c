@@ -157,13 +157,15 @@ int main(){
                     contGanhouColuna++;
                 }
                 if(contGanhouLinha == 3 || contGanhouColuna == 3 || jogoDaVelha[0][0] == 'o' && jogoDaVelha[1][1] == 'o' && jogoDaVelha[2][2] == 'o'|| jogoDaVelha[0][2] == 'o' && jogoDaVelha[1][1] == 'o' && jogoDaVelha[2][0] == 'o'){
-                    printf("o jogador O ganhou!!");
+                    
                     jogador_atualO = 1;
                 }
 
             }
         }
-
+        if(jogador_atualO == 1){
+            printf("o jogador O ganhou!!");
+        }
 
         
         
