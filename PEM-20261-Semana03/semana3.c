@@ -1,3 +1,8 @@
+//Eduardo Melo Glaser
+//Fatec - PEM - Vespertino
+//criar um programa com todas as funções do CRUD, CRIAR, LER, ATUALIZAR, DELETAR
+//06/03/2026
+
 #include <stdio.h>
 #include <string.h>
 
