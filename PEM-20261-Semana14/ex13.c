@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-int maximoDivisorComum(int n){ //arrumar
-    int menorDivisor;
-    for(int i=n/2; i>1;i--){
-        if(n%i == 0){
-            menorDivisor = i;
-        }
+int maximoDivisorComum(int n1, int n2){ //arrumar
+    //n1%n2 != 0, n2/(n1%n2)
+    if(n1%n2 != 0){
+        maximoDivisorComum(n2,n1%n2);
     }
-    return menorDivisor;
+    else{
+        return n2;
+    }
 };
 
 int potenciaInteira(int base, int expoente){ 
@@ -39,32 +39,33 @@ int conversaoDecimalBinario(int n){
     printf("%d", n%2);
 };
 void scan(int *p){
-    scanf("%d" ,*p);
+    scanf("%d" ,p);
     return;
 }
 
 
 int main(){
 
-int n, escolha;
+int n,n2, escolha;
 int expoente;
 
-int *pN=&n, *pEscolha = &escolha, *pExpoente = &expoente;
+int *pN=&n, *pEscolha = &escolha, *pExpoente = &expoente, *pN2 = &n2;
 
-printf("ESCOLHA UMA OPCAO PARA PROSSEGUIR:\n\n1-Maximo divisor comum\n2-Potencia\n3-Verificar se e primo\n4-Converter para binario\n0-Sair");
 
 do{
+    printf("\n\nESCOLHA UMA OPCAO PARA PROSSEGUIR:\n\n1-Maximo divisor comum\n2-Potencia\n3-Verificar se e primo\n4-Converter para binario\n5-Sair\n\n");
     scan(pEscolha);
     switch(escolha){
         case 1: //corrigir
             scan(pN);
-            printf("%d", maximoDivisorComum(n));
+            scan(pN2);
+            printf("maximo divisor comum: %d", maximoDivisorComum(n,n2));
             break;
         case 2:
             printf("\ndigite respectivamente o numero e o expoente: ");
             scan(pN);
             scan(pExpoente);
-            printf("%d", potenciaInteira(n,expoente));
+            printf("potencia de %d elevado a %d: %d", n,expoente,potenciaInteira(n,expoente));
             break;
         case 3:
         printf("\ndigite o numero para verificar se ele e primo: ");
@@ -87,6 +88,7 @@ do{
         default:
             printf("\nescolha um numero valido");
             break;
+        printf("\n");
     }
     
 
@@ -95,5 +97,5 @@ do{
     
     
 
-}while(escolha != 0);
+}while(escolha != 5);
 }
