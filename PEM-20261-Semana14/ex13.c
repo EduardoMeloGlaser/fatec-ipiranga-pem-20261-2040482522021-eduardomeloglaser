@@ -1,97 +1,87 @@
+
+///---------------------------------------------------------
+//*                    FATEC Ipiranga                      *
+//* Disciplina: Programaçao Estruturada e Modular          *
+//*          Prof. Veríssimo                               *
+//----------------------------------------------------------
+//*O programa realiza operações com strings utilizando     *
+//*funções implementadas em biblioteca externa. O código   *
+//*conta a quantidade de vogais presentes em palavras,     *
+//*inverte strings diretamente na memória e verifica se uma*
+//*palavra é um palíndromo. As funções são chamadas a      *
+//*partir do arquivo de cabeçalho "ex13f.h" e os resultados*
+//*são exibidos na tela para diferentes exemplos de teste. *
+//* Data - 28/05/2026                                      * 
+//* Autor: Eduardo Melo Glaser;2040482522021               *
+///--------------------------------------------------------/
+
 #include <stdio.h>
-
-int maximoDivisorComum(int n1, int n2){ //arrumar
-    //n1%n2 != 0, n2/(n1%n2)
-    if(n1%n2 != 0){
-        maximoDivisorComum(n2,n1%n2);
-    }
-    else{
-        return n2;
-    }
-};
-
-int potenciaInteira(int base, int expoente){ 
-    if(expoente == 1){
-        return base;
-    }
-    return base*potenciaInteira(base,--expoente);
-};
-
-int verificadorNumeroPrimo(int n){
-//verificar se um numero so pode ser dividido por 1 e por ele msm
-    int encontrar = 0; 
-    for(int i = n/2;encontrar < 1 || i == 1; i--){
-        if(n%i == 0){
-            encontrar = 1;
-        }
-    }
-    return encontrar;
-};
-
-int conversaoDecimalBinario(int n){
-    
-    if(n == 1){
-        printf("1");
-        return 1;
-    }
-    
-    conversaoDecimalBinario(n/2); 
-    printf("%d", n%2);
-};
-void scan(int *p){
-    scanf("%d" ,p);
-    return;
-}
-
+#include "ex13f.h"
 
 int main(){
 
-    int n,n2, escolha;
-    int expoente;
+   
+    // TESTE DA FUNCAO CONTA VOGAIS
+    
 
-    int *pN=&n, *pEscolha = &escolha, *pExpoente = &expoente, *pN2 = &n2;
+    char palavra[8] = "palavra";
+    char arara[6] = "arara";
 
+    // Conta vogais da palavra "palavra"
+    printf("\n\nEX 1 CONT VOGAIS 'PALAVRA': ");
 
-    do{
-        printf("\n\nESCOLHA UMA OPCAO PARA PROSSEGUIR:\n\n1-Maximo divisor comum\n2-Potencia\n3-Verificar se e primo\n4-Converter para binario\n5-Sair\n\n");
-        scan(pEscolha);
-        switch(escolha){
-            case 1: 
-                printf("\ndigite o numerador e o denominador: ");
-                scan(pN);
-                scan(pN2);
-                printf("maximo divisor comum: %d", maximoDivisorComum(n,n2));
-                break;
-            case 2:
-                printf("\ndigite respectivamente o numero e o expoente: ");
-                scan(pN);
-                scan(pExpoente);
-                printf("potencia de %d elevado a %d: %d", n,expoente,potenciaInteira(n,expoente));
-                break;
-            case 3:
-            printf("\ndigite o numero para verificar se ele e primo: ");
-                scan(pN);
-                if(verificadorNumeroPrimo(n) == 1){
-                    printf("\no numero e primo");
-                }
-                else{
-                    printf("\no numero nao e primo");
-                }
-                break;
-            case 4:
-                printf("\ndigite um numero para ele ser convertido em binario: ");
-                scan(pN);
-                conversaoDecimalBinario(n);
-                break;
-            case 5:
-                printf("\nprograma encerrado");
-                break;
-            default:
-                printf("\nescolha um numero valido");
-                break;
-            printf("\n");
-        }
+    printf("%d", contaVogais(palavra));
 
-    }while(escolha != 5);
+    // Conta vogais da palavra "arara"
+    printf("\n\nEX 2 CONT VOGAIS 'ARARA': ");
+
+    printf("%d", contaVogais(arara));
+
+   
+    // TESTE DA FUNCAO INVERTER STRING
+   
+
+    char caneta[7] = "caneta";
+    char obrigado[9] = "obrigado";
+
+    // Inverte a string "caneta"
+    printf("\n\nEX 1 INVERTER STRING 'CANETA': ");
+
+    inverteCString(caneta);
+
+    // Exibe a string invertida
+    for(int i = 0; i < 6; i++){
+
+        printf("%c", caneta[i]);
+    }
+
+    // Inverte a string "obrigado"
+    printf("\n\nEX 2 INVERTER STRING 'OBRIGADO': ");
+
+    inverteCString(obrigado);
+
+    // Exibe a string invertida
+    for(int i = 0; i < 8; i++){
+
+        printf("%c", obrigado[i]);
+    }
+
+    
+    // TESTE DA FUNCAO PALINDROMO
+  
+
+    char ovo[4] = "ovo";
+    char controle[9] = "controle";
+
+    // Verifica se "ovo" é palíndromo
+    printf("\n\nEX 1 PALINDROMO 'OVO': ");
+
+    printf("%d", ePalindromo(ovo));
+
+    // Verifica se "controle" é palíndromo
+    printf("\n\nEX 2 PALINDROMO 'CONTROLE':");
+
+    printf("%d", ePalindromo(controle));
+
     return 0;
 }
