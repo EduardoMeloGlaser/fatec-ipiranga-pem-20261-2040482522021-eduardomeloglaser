@@ -46,56 +46,52 @@ void scan(int *p){
 
 int main(){
 
-int n,n2, escolha;
-int expoente;
+    int n,n2, escolha;
+    int expoente;
 
-int *pN=&n, *pEscolha = &escolha, *pExpoente = &expoente, *pN2 = &n2;
+    int *pN=&n, *pEscolha = &escolha, *pExpoente = &expoente, *pN2 = &n2;
 
 
-do{
-    printf("\n\nESCOLHA UMA OPCAO PARA PROSSEGUIR:\n\n1-Maximo divisor comum\n2-Potencia\n3-Verificar se e primo\n4-Converter para binario\n5-Sair\n\n");
-    scan(pEscolha);
-    switch(escolha){
-        case 1: //corrigir
-            scan(pN);
-            scan(pN2);
-            printf("maximo divisor comum: %d", maximoDivisorComum(n,n2));
-            break;
-        case 2:
-            printf("\ndigite respectivamente o numero e o expoente: ");
-            scan(pN);
-            scan(pExpoente);
-            printf("potencia de %d elevado a %d: %d", n,expoente,potenciaInteira(n,expoente));
-            break;
-        case 3:
-        printf("\ndigite o numero para verificar se ele e primo: ");
-            scan(pN);
-            if(verificadorNumeroPrimo(n) == 1){
-                printf("\no numero e primo");
-            }
-            else{
-                printf("\no numero nao e primo");
-            }
-            break;
-        case 4:
-            printf("\ndigite um numero para ele ser convertido em binario: ");
-            scan(pN);
-            conversaoDecimalBinario(n);
-            break;
-        case 5:
-            printf("\nprograma encerrado");
-            break;
-        default:
-            printf("\nescolha um numero valido");
-            break;
-        printf("\n");
-    }
-    
+    do{
+        printf("\n\nESCOLHA UMA OPCAO PARA PROSSEGUIR:\n\n1-Maximo divisor comum\n2-Potencia\n3-Verificar se e primo\n4-Converter para binario\n5-Sair\n\n");
+        scan(pEscolha);
+        switch(escolha){
+            case 1: 
+                printf("\ndigite o numerador e o denominador: ");
+                scan(pN);
+                scan(pN2);
+                printf("maximo divisor comum: %d", maximoDivisorComum(n,n2));
+                break;
+            case 2:
+                printf("\ndigite respectivamente o numero e o expoente: ");
+                scan(pN);
+                scan(pExpoente);
+                printf("potencia de %d elevado a %d: %d", n,expoente,potenciaInteira(n,expoente));
+                break;
+            case 3:
+            printf("\ndigite o numero para verificar se ele e primo: ");
+                scan(pN);
+                if(verificadorNumeroPrimo(n) == 1){
+                    printf("\no numero e primo");
+                }
+                else{
+                    printf("\no numero nao e primo");
+                }
+                break;
+            case 4:
+                printf("\ndigite um numero para ele ser convertido em binario: ");
+                scan(pN);
+                conversaoDecimalBinario(n);
+                break;
+            case 5:
+                printf("\nprograma encerrado");
+                break;
+            default:
+                printf("\nescolha um numero valido");
+                break;
+            printf("\n");
+        }
 
-    
-
-    
-    
-
-}while(escolha != 5);
+    }while(escolha != 5);
+    return 0;
 }
